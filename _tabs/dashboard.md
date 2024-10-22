@@ -14,7 +14,7 @@ order: 1
 </div>  
     
 <script type="module">
-    import { initializeCharts } from '/assets/js/plrr-tradingview.js'; // Importing initializeCharts
+    import { initializeCharts } from '/assets/js/plrr-tradingview.js';
 
     async function fetchData() {
     const bitcoinResponse = await fetch('https://python-server-e4a8c032b69c.herokuapp.com/bitcoin-price');
@@ -23,13 +23,12 @@ order: 1
     const bitcoinData = await bitcoinResponse.json();
     const quantileData = await quantileResponse.json();
         
-    // Combine or process the data as needed
-    return { bitcoinData, quantileData }; // Adjust this return as necessary
+    return { bitcoinData, quantileData }; 
     }
 
     fetchData()
     .then(data => {
-        document.getElementById('cover-spin').remove(); // Remove the spinner after data is loaded
-        initializeCharts(data.bitcoinData,data.quantileData); // Pass the combined data to initializeCharts
+        document.getElementById('cover-spin').remove(); 
+        initializeCharts(data.bitcoinData,data.quantileData); 
     });
 </script>
