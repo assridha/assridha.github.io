@@ -1,11 +1,25 @@
 ---
 layout: post
 title: PLRR metric
+categories: ['Price']
+tags: ['source-code']
 date: 2024-10-22 16:40 +0000
 ---
 
-<link rel="stylesheet" type="text/css" href="/assets/css/spinner.css">
+## Introduction
+
+## Derivation
+
+## Analysis
+
+## Discussion
+
+## Source Code
+
+## References
 
 
 
-<div id="cover-spin"></div>
+
+
+
