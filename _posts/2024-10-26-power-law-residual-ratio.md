@@ -99,13 +99,16 @@ Thus, the arguments in favor of $N\sim 365$ days as the optimal choice can be su
 * It roughly matches the duration of a cycle phase, making it ideal for estimating volatility.
 * It is sufficiently long to ensure that the power law price trend plays a significant role in the total return. 
 
-![img-description](/assets/img/zpl_90.png)
+![img-description](/assets/img/zpl_90.png){: .light }
+![img-description](/assets/img/zpl_90_black.png){: .dark }
 _Image Caption_
 
-![img-description](/assets/img/zpl_540.png)
+![img-description](/assets/img/zpl_540.png){: .light }
+![img-description](/assets/img/zpl_540_black.png){: .dark }
 _Image Caption_
 
-![img-description](/assets/img/zpl_365.png)
+![img-description](/assets/img/zpl_365.png){: .light }
+![img-description](/assets/img/zpl_365_black.png){: .dark }
 _Image Caption_
 
 
@@ -115,8 +118,10 @@ The formula for price return involves only two parameters, the price on day $n$ 
 ### Averaging over time to remove price jumps
 A straightforward approach to solve the issue of past price jumps is to simply average $z_{pl}$ over a range of $N$ values. The averaging should also in principle dampen other spurious oscillations that result from the choice of $N$ and strengthen secular price trends resulting from momentum. 
 
-![img-description](/assets/img/Zpl_averaging.png)
+![img-description](/assets/img/Zpl_averaging.png){: .light }
+![img-description](/assets/img/Zpl_averaging_invert.png){: .dark }
 _Image Caption_
+
 
 ## Looking Forward
 
