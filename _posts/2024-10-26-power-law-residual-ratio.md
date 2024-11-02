@@ -1,13 +1,13 @@
 ---
 layout: post
-title: Introducing the Power Law Residual Ratio
+title: Introducing the Power Law Residual Ratio v2
 date: 2024-10-26 23:21 +0200
 categories: ['Price']
 tags: ['source-code']
 math: true
 image:
   path: /assets/img/Zpl.png
-  alt: The power law residual ratio
+  alt: The power law residual ratio v2
 ---
 
 
@@ -18,7 +18,7 @@ An intriguing question about Bitcoin's price behavior is whether we can predict 
 
 The key distinction between price-based and return-based indicators (like the one introduced here) lies in what they measure. Price-based indicators measure the deviation from an absolute power law price level, while return-based indicators measure the deviation in Bitcoin's growth rate relative to the natural power law growth rate. Return-based indicators are particularly sensitive to rapid price changes, making them useful for detecting the onset of bull market rallies or bear market crashes. This sensitivity gives return-based indicators a phase lead over price-based ones.
 
-However, return-based indicators may not necessarily predict the peak cycle price. For instance, during the 2021 rally, the price remained elevated for an extended period. In such cases, the return-based indicator would revert to the fair value level as the higher price establishes a new support level. Therefore, combining both price and return-based indicators can provide a more comprehensive understanding of the current cycle phase. You can find a live chart implementing both approaches in the [Dashboard](/dashboard/#bitcoin-price-and-return-bounds) section, where I use a power law quantile regression model for price and the power law residual ratio for returns.
+However, return-based indicators may not necessarily predict the peak cycle price. For instance, during the 2021 rally, the price remained elevated for an extended period. In such cases, the return-based indicator would revert to the fair value level as the higher price establishes a new support level. Therefore, combining both price and return-based indicators can provide a more comprehensive understanding of the current cycle phase. You can find a live chart implementing both approaches in the [Dashboard](/dashboard/#bitcoin-price-and-return) section, where I use a power law quantile regression model for price and the power law residual ratio for returns.
 
 > <sup>1</sup> The symbol $Z$ was chosen for the indicator due to its resemblance to the z-index.
 
