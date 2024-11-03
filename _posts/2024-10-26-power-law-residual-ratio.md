@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Introducing the Power Law Residual Ratio v2
+title: Power Law Residual Ratio v2
 date: 2024-10-26 23:21 +0200
 categories: ['Price']
 tags: ['source-code']

@@ -6,7 +6,9 @@ order: 1
 ## Bitcoin Price and Return
 
 #### Stats
-
+<button type="button" class="btn btn-sm" id="refreshDataButton" style="background-color: transparent; color: gray; padding: 0;">
+     <i class="fas fa-sync-alt"></i> Refresh
+</button>
 <table>
     <tr>
         <th></th>
@@ -48,7 +50,6 @@ order: 1
 <div id="container" style="background-color:#222; margin-bottom:20px">
     <div id="cover-spin"></div>
 </div>  
-
 <div>
     <table style="margin-top: 20px; margin-bottom:10px">
         <thead>
@@ -86,16 +87,24 @@ order: 1
     </table>
 </div>
 
+
+
+
+
 #### Info
-The price levels are based on quantile regression using historical log price vs log time data. The return levels is based on the PLRR™ indicator. For info on how PLRR is calculated see [article](/posts/power-law-residual-ratio/).
+The price levels were determined used quantile regression on historical log price vs log time data. The return deviation (z-score) is based on Power Law Residual Ratio v2<sup>TM</sup> (See [article](/posts/power-law-residual-ratio/) for details).
 
 The daily live price data is obtained using the `yfinance` API.
 
-> Disclaimer: The projected prices shown in the chart above are purely suggestive. No conclusion on actual price can be derived. #NFA #DYOR
+> Disclaimer: The projected prices shown in the chart above are purely suggestive. No conclusion on actual price can be derived.
 {: .prompt-warning }    
 
-#### References
-[1] [https://x.com/TheRealPlanC/status/1847534302306742523](https://x.com/TheRealPlanC/status/1847534302306742523)
+> Share your feedback or suggestions for enhancing this page [here](https://github.com/assridha/assridha.github.io/discussions/5).
+{: .prompt-tip} 
+
+#### Links
+[1] [https://x.com/TheRealPlanC/status/1847534302306742523](https://x.com/TheRealPlanC/status/1847534302306742523) \
+[2] [G. Santostasi, The Bitcoin Power Law Theory](https://giovannisantostasi.medium.com/the-bitcoin-power-law-theory-962dfaf99ee9)
 
 
 
@@ -113,6 +122,7 @@ The daily live price data is obtained using the `yfinance` API.
 
     fetchData()
     .then(data => {
+        console.log('server response OK')
         document.getElementById('cover-spin').remove(); 
         initializeCharts(data.price_history,data.quantile_price); 
         getStats(data.stats)
@@ -161,6 +171,19 @@ The daily live price data is obtained using the `yfinance` API.
         
     }
     
+    document.getElementById('refreshDataButton').addEventListener('click', () => {
+
+        fetchData()
+    .then(data => {
+        console.log('server response OK')
+        document.getElementById('container').innerHTML = '';
+        initializeCharts(data.price_history,data.quantile_price); 
+        getStats(data.stats)
+    });
+    }
+
+
+    );
 
 
 </script>

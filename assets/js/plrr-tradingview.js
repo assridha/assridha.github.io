@@ -6216,7 +6216,7 @@ function _h() {
   const i = document.createElement("div");
   i.id = "chartTop", i.style.display = "flex", i.style.flexDirection = "column", i.style.justifyContent = "center", i.style.alignItems = "center", i.style.height = "30rem", n.appendChild(i);
   const s = document.createElement("h4");
-  s.textContent = "Zpl - index", s.style.color = "gray", s.style.textAlign = "center", s.style.margin = "0", n.appendChild(s);
+  s.innerHTML = "Z<sub>pl</sub> - score", s.style.color = "gray", s.style.textAlign = "center", s.style.margin = "0", n.appendChild(s);
   const e = document.createElement("div");
   e.id = "chartBottom", e.style.display = "flex", e.style.flexDirection = "column", e.style.justifyContent = "center", e.style.alignItems = "center", e.style.height = "14rem", e.style.borderRight = "32px solid #222", n.appendChild(e);
   const h = ws(
