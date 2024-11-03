@@ -105,27 +105,20 @@ The daily live price data is obtained using the `yfinance` API.
     import { initializeCharts } from '/assets/js/plrr-tradingview.js';
 
     async function fetchData() {
-    const bitcoinResponse = await fetch('https://python-server-e4a8c032b69c.herokuapp.com/bitcoin-price');
-    const quantileResponse = await fetch('https://python-server-e4a8c032b69c.herokuapp.com/quantile-price');
-        
+    const bitcoinResponse = await fetch('https://python-server-e4a8c032b69c.herokuapp.com/bitcoin-data');
     const bitcoinData = await bitcoinResponse.json();
-    const quantileData = await quantileResponse.json();
         
-    return { bitcoinData, quantileData }; 
+    return bitcoinData; 
     }
 
     fetchData()
     .then(data => {
         document.getElementById('cover-spin').remove(); 
-        initializeCharts(data.bitcoinData,data.quantileData); 
+        initializeCharts(data.price_history,data.quantile_price); 
+        getStats(data.stats)
     });
-</script>
 
-<script>
-
-    (async function getStats() {
-        const stats = await fetch('https://python-server-e4a8c032b69c.herokuapp.com/stats');
-        const statsData = await stats.json();
+    function getStats(statsData) {
 
     const change1dElement = document.getElementById('change1d');
     change1dElement.textContent = `${statsData.change1d.toFixed(2)}%`;
@@ -166,7 +159,7 @@ The daily live price data is obtained using the `yfinance` API.
 
 
         
-    })();
+    }
     
 
 
