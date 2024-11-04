@@ -123,6 +123,7 @@ The daily live price data is obtained using the `yfinance` API.
     fetchData()
     .then(data => {
         document.getElementById('cover-spin').remove(); 
+        console.log(data.price_history[data.price_history.length - 1]);
         initializeCharts(data.price_history,data.quantile_price); 
         getStats(data.stats)
     });
