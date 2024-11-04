@@ -123,7 +123,7 @@ The daily live price data is obtained using the `yfinance` API.
     initializeCharts(bitcoinData.price_history,bitcoinData.quantile_price); 
     getStats(bitcoinData.stats);
     
-    }
+    };
 
     fetchData();
 
@@ -136,7 +136,7 @@ The daily live price data is obtained using the `yfinance` API.
         change1dElement.innerHTML += ' <span style="color: green;">&#x25B2;</span>';
     } else {
         change1dElement.innerHTML += ' <span style="color: red;">&#x25BC;</span>';
-    }
+    };
     const change30dElement = document.getElementById('change30d');
     change30dElement.textContent = `${statsData.change30d.toFixed(2)}%`;
     change30dElement.style.color = statsData.change30d > 0 ? 'green' : 'red';
@@ -144,7 +144,7 @@ The daily live price data is obtained using the `yfinance` API.
         change30dElement.innerHTML += ' <span style="color: green;">&#x25B2;</span>';
     } else {
         change30dElement.innerHTML += ' <span style="color: red;">&#x25BC;</span>';
-    }
+    };
     const change1yrElement = document.getElementById('change1yr');
     change1yrElement.textContent = `${statsData.change1yr.toFixed(2)}%`;
     change1yrElement.style.color = statsData.change1yr > 0 ? 'green' : 'red';
@@ -152,7 +152,7 @@ The daily live price data is obtained using the `yfinance` API.
         change1yrElement.innerHTML += ' <span style="color: green;">&#x25B2;</span>';
     } else {
         change1yrElement.innerHTML += ' <span style="color: red;">&#x25BC;</span>';
-    }
+    };
 
     const change1dPLElement = document.getElementById('change1d_PL');
     change1dPLElement.textContent = `${statsData.change1d_PL.toFixed(2)}%`;
@@ -168,12 +168,12 @@ The daily live price data is obtained using the `yfinance` API.
 
 
         
-    }
+    };
     
     document.getElementById('refreshDataButton').addEventListener('click', () => {
 
         fetchData();
-    }
+    };
 
 
     );
