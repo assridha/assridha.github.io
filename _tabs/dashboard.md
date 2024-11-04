@@ -114,8 +114,7 @@ The daily live price data is obtained using the `yfinance` API.
     import { initializeCharts } from '/assets/js/plrr-tradingview.js';
 
     async function fetchData() {
-    let bitcoinResponse = null
-    bitcoinResponse = await fetch('https://python-server-e4a8c032b69c.herokuapp.com/bitcoin-data');
+    let bitcoinResponse = null;
     bitcoinResponse = await fetch('https://python-server-e4a8c032b69c.herokuapp.com/bitcoin-data');
     const bitcoinData = await bitcoinResponse.json();
         
