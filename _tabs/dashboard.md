@@ -5,47 +5,9 @@ order: 1
 
 ## Bitcoin Price and Return
 
-#### Stats
-<button type="button" class="btn btn-sm" id="refreshDataButton" style="background-color: transparent; color: gray; padding: 0;">
-     <i class="fas fa-sync-alt"></i> Refresh
-</button>
-<table>
-    <tr>
-        <th></th>
-        <th colspan="3">Price change</th>
-        <th>Volatility</th>
-    </tr>
-    <tr>
-        <th></th>
-        <th>1d</th>
-        <th>30d</th>
-        <th>1yr</th>
-        <th>30d</th>
-    </tr>
-    <tr>
-        <td>Actual</td>
-        <td id="change1d" style="padding: 0px 2px;"></td>
-        <td id="change30d" style="padding: 0px 2px;"></td>
-        <td id="change1yr" style="padding: 0px 2px;"></td>
-        <td id="vol30d" style="padding: 0px 2px;"></td>
-    </tr>
-    <tr>
-        <td>Power law</td>
-        <td id="change1d_PL" style="padding: 0px 2px;"></td>
-        <td id="change30d_PL" style="padding: 0px 2px;"></td>
-        <td id="change1yr_PL" style="padding: 0px 2px;"></td>
-        <td id="vol30d_PL" style="padding: 0px 2px;"></td>
-    </tr>
-</table>
-
-
-
-
 
 <link rel="stylesheet" type="text/css" href="/assets/css/spinner.css">
 <link rel="stylesheet" type="text/css" href="/assets/css/dashboard.css">
-
-#### Chart
 
 <div id="container" style="background-color:#222; margin-bottom:20px">
     <div id="cover-spin"></div>
@@ -114,63 +76,32 @@ The daily live price data is obtained using the `yfinance` API.
     import { initializeCharts } from '/assets/js/plrr-tradingview.js';
 
     function fetchData() {
-        // Add cache-busting query parameter with current timestamp
         const timestamp = new Date().getTime();
         fetch(`https://python-server-e4a8c032b69c.herokuapp.com/bitcoin-data?_=${timestamp}`, {
-            cache: 'no-store' // Force bypass cache
+            cache: 'no-store'
         })
-        .then(response => response.json())
-        .then(bitcoinData => {
-            document.getElementById('container').innerHTML = '';
-            console.log(bitcoinData.price_history[bitcoinData.price_history.length - 1]);
-            initializeCharts(bitcoinData.price_history,bitcoinData.quantile_price); 
-            getStats(bitcoinData.stats);
+        .then(response => {
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            return response.text();
         })
-        .catch(error => console.error('Error fetching data:', error));
-    };
+        .then(text => {
+            try {
+                const bitcoinData = JSON.parse(text);
+                document.getElementById('container').innerHTML = '';
+                console.log(bitcoinData.price_history[bitcoinData.price_history.length - 1]);
+                initializeCharts(bitcoinData.price_history, bitcoinData.quantile_price);
+            } catch (e) {
+                console.error('JSON parsing error:', e);
+                throw e;
+            }
+        })
+        .catch(error => {
+            console.error('Error fetching data:', error);
+            document.getElementById('container').innerHTML = 'Error loading data. Please try again later.';
+        });
+    }
 
     fetchData();
-
-    function getStats(statsData) {
-
-    const change1dElement = document.getElementById('change1d');
-    change1dElement.textContent = `${statsData.change1d.toFixed(2)}%`;
-    change1dElement.style.color = statsData.change1d > 0 ? 'green' : 'red';
-    if (statsData.change1d > 0) {
-        change1dElement.innerHTML += ' <span style="color: green;">&#x25B2;</span>';
-    } else {
-        change1dElement.innerHTML += ' <span style="color: red;">&#x25BC;</span>';
-    };
-    const change30dElement = document.getElementById('change30d');
-    change30dElement.textContent = `${statsData.change30d.toFixed(2)}%`;
-    change30dElement.style.color = statsData.change30d > 0 ? 'green' : 'red';
-    if (statsData.change30d > 0) {
-        change30dElement.innerHTML += ' <span style="color: green;">&#x25B2;</span>';
-    } else {
-        change30dElement.innerHTML += ' <span style="color: red;">&#x25BC;</span>';
-    };
-    const change1yrElement = document.getElementById('change1yr');
-    change1yrElement.textContent = `${statsData.change1yr.toFixed(2)}%`;
-    change1yrElement.style.color = statsData.change1yr > 0 ? 'green' : 'red';
-    if (statsData.change1yr > 0) {
-        change1yrElement.innerHTML += ' <span style="color: green;">&#x25B2;</span>';
-    } else {
-        change1yrElement.innerHTML += ' <span style="color: red;">&#x25BC;</span>';
-    };
-
-    const change1dPLElement = document.getElementById('change1d_PL');
-    change1dPLElement.textContent = `${statsData.change1d_PL.toFixed(2)}%`;
-    const change30dPLElement = document.getElementById('change30d_PL');
-    change30dPLElement.textContent = `${statsData.change30d_PL.toFixed(2)}%`;
-    const change1yrPLElement = document.getElementById('change1yr_PL');
-    change1yrPLElement.textContent = `${statsData.change1yr_PL.toFixed(2)}%`;
-
-    const changeVol30dElement = document.getElementById('vol30d');
-    changeVol30dElement.textContent = `${statsData.volatility30d.toFixed(2)}%`;
-    const changeVol30dPLElement = document.getElementById('vol30d_PL');
-    changeVol30dPLElement.textContent = `${statsData.volatility30d_PL.toFixed(2)}%`;
-
-
-        
-    };
 </script>
