@@ -121,11 +121,11 @@ The daily live price data is obtained using the `yfinance` API.
     document.getElementById('container').innerHTML = '';
     console.log(bitcoinData.price_history[bitcoinData.price_history.length - 1]);
     initializeCharts(bitcoinData.price_history,bitcoinData.quantile_price); 
-    getStats(bitcoinData.stats)
+    getStats(bitcoinData.stats);
     
     }
 
-    fetchData()
+    fetchData();
 
     function getStats(statsData) {
 
@@ -172,7 +172,7 @@ The daily live price data is obtained using the `yfinance` API.
     
     document.getElementById('refreshDataButton').addEventListener('click', () => {
 
-        fetchData()
+        fetchData();
     }
 
 
