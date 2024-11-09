@@ -69,12 +69,20 @@ The daily live price data is obtained using the `yfinance` API.
 <script type="module">
     import { initializeCharts } from '/assets/js/plrr-tradingview.js';
 
-    function fetchData() {
+    function fetchData(retryCount = 0, maxRetries = 3) {
+        const timeout = 10000; // 10 seconds timeout
         const timestamp = new Date().getTime();
+        
+        // Create abort controller for timeout
+        const controller = new AbortController();
+        const timeoutId = setTimeout(() => controller.abort(), timeout);
+
         fetch(`https://python-server-e4a8c032b69c.herokuapp.com/bitcoin-data?_=${timestamp}`, {
-            cache: 'no-store'
+            cache: 'no-store',
+            signal: controller.signal
         })
         .then(response => {
+            clearTimeout(timeoutId);
             if (!response.ok) {
                 throw new Error(`HTTP error! status: ${response.status}`);
             }
@@ -92,7 +100,12 @@ The daily live price data is obtained using the `yfinance` API.
         })
         .catch(error => {
             console.error('Error fetching data:', error);
-            document.getElementById('container').innerHTML = 'Error loading data. Please try again later.';
+            if (retryCount < maxRetries) {
+                console.log(`Retrying... Attempt ${retryCount + 1} of ${maxRetries}`);
+                setTimeout(() => fetchData(retryCount + 1, maxRetries), 1000 * (retryCount + 1));
+            } else {
+                document.getElementById('container').innerHTML = 'Error loading data. Please try again later.';
+            }
         });
     }
 
