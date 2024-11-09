@@ -54,21 +54,15 @@ order: 1
 
 
 #### Info
-The price levels were determined used quantile regression on historical log price vs log time data. The return deviation (z-score) is based on Power Law Residual Ratio v2<sup>TM</sup> (See [article](/posts/power-law-residual-ratio/) for details).
+The price levels were determined used quantile regression on historical log price vs log time data. The return deviation (z-score) is based on Power Law Residual Ratio v2 (See [article](/posts/power-law-residual-ratio/) for details).
 
-The daily live price data is obtained using the `yfinance` API.
+The daily live price data is obtained using the `yfinance` API. 
 
 > Disclaimer: The projected prices shown in the chart above are purely suggestive. No conclusion on actual price can be derived.
 {: .prompt-warning }    
 
 > Share your feedback or suggestions for enhancing this page [here](https://github.com/assridha/assridha.github.io/discussions/5).
 {: .prompt-tip} 
-
-#### Links
-[1] [https://x.com/TheRealPlanC/status/1847534302306742523](https://x.com/TheRealPlanC/status/1847534302306742523) \
-[2] [G. Santostasi, The Bitcoin Power Law Theory](https://giovannisantostasi.medium.com/the-bitcoin-power-law-theory-962dfaf99ee9)
-
-
 
 
 
@@ -90,7 +84,6 @@ The daily live price data is obtained using the `yfinance` API.
             try {
                 const bitcoinData = JSON.parse(text);
                 document.getElementById('container').innerHTML = '';
-                console.log(bitcoinData.price_history[bitcoinData.price_history.length - 1]);
                 initializeCharts(bitcoinData.price_history, bitcoinData.quantile_price);
             } catch (e) {
                 console.error('JSON parsing error:', e);
