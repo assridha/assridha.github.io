@@ -70,10 +70,8 @@ The daily live price data is obtained using the `yfinance` API.
     import { initializeCharts } from '/assets/js/plrr-tradingview.js';
 
     function fetchData(retryCount = 0, maxRetries = 3) {
-        const timeout = 10000; // 10 seconds timeout
+        const timeout = 10000; 
         const timestamp = new Date().getTime();
-        
-        // Create abort controller for timeout
         const controller = new AbortController();
         const timeoutId = setTimeout(() => controller.abort(), timeout);
 
