@@ -107,7 +107,7 @@ The daily live price data is obtained using the `yfinance` API.
                 document.getElementById('container').innerHTML = 'Error loading data. Please try again later.';
             }
         });
-    }
-
+    };
+    console.log('Script loaded');
     fetchData();
 </script>
