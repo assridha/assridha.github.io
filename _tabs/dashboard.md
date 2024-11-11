@@ -82,7 +82,7 @@ The daily live price data is obtained using the `yfinance` API.
         if (isLoading) return;
         isLoading = true;
 
-        const timeout = 8000; // Reduced timeout
+        const timeout = 8000;
         const timestamp = new Date().getTime();
         const controller = new AbortController();
         const timeoutId = setTimeout(() => controller.abort(), timeout);
