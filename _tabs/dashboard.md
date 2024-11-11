@@ -19,12 +19,12 @@ order: 1
             <tr>
                 <th colspan="2">Price Quantile (Trendlines)</th>
                 <th colspan="2">Return Deviation (Colorscale)</th>
-                <th colspan="1">Valuation</th>
+                <th colspan="1">Indication</th>
             </tr>
             <tr>
-                <th>Label</th>
+                <th>Level</th>
                 <th>Color</th>
-                <th>Label</th>
+                <th>Level</th>
                 <th>Color</th>
                 <th> </th>
             </tr>
@@ -64,8 +64,8 @@ The price levels were determined used quantile regression on historical log pric
 
 The daily live price data is obtained using the `yfinance` API. 
 
-> Disclaimer: The projected prices shown in the chart above are purely suggestive. No conclusion on actual price can be derived.
-{: .prompt-warning }    
+> Disclaimer: 1) The projected prices shown in the chart above are purely suggestive. No conclusion on actual price can be derived. 2) The models applied here are subject to change. 
+{: .prompt-warning }  
 
 > Share your feedback or suggestions for enhancing this page [here](https://github.com/assridha/assridha.github.io/discussions/5).
 {: .prompt-tip} 
@@ -75,11 +75,10 @@ The daily live price data is obtained using the `yfinance` API.
 <script type="module">
     import { initializeCharts } from '/assets/js/plrr-tradingview.js';
 
-    // Add loading state management
     let isLoading = false;
 
     async function fetchData(retryCount = 0, maxRetries = 3) {
-        // Prevent multiple simultaneous requests
+  
         if (isLoading) return;
         isLoading = true;
 
@@ -89,7 +88,7 @@ The daily live price data is obtained using the `yfinance` API.
         const timeoutId = setTimeout(() => controller.abort(), timeout);
 
         try {
-            // Add performance optimization headers
+          
             const response = await fetch(`https://python-server-e4a8c032b69c.herokuapp.com/bitcoin-data?_=${timestamp}`, {
                 cache: 'no-store',
                 signal: controller.signal,
@@ -103,7 +102,6 @@ The daily live price data is obtained using the `yfinance` API.
             
             if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
             
-            // Use response.json() directly instead of text() + parse
             const bitcoinData = await response.json();
             document.getElementById('container').innerHTML = '';
             initializeCharts(bitcoinData.price_history, bitcoinData.quantile_price);
@@ -111,7 +109,7 @@ The daily live price data is obtained using the `yfinance` API.
             console.error('Error fetching data:', error);
             if (retryCount < maxRetries) {
                 console.log(`Retrying... Attempt ${retryCount + 1} of ${maxRetries}`);
-                setTimeout(() => fetchData(retryCount + 1, maxRetries), 1000 * Math.pow(2, retryCount)); // Exponential backoff
+                setTimeout(() => fetchData(retryCount + 1, maxRetries), 1000 * Math.pow(2, retryCount)); 
             } else {
                 document.getElementById('container').innerHTML = 'Error loading data. Please try again later.';
             }
@@ -120,7 +118,6 @@ The daily live price data is obtained using the `yfinance` API.
         }
     }
 
-    // Initialize as soon as possible
     if (document.readyState === 'loading') {
         document.addEventListener('DOMContentLoaded', fetchData);
     } else {
