@@ -64,7 +64,7 @@ The price levels were determined used quantile regression on historical log pric
 
 The daily live price data is obtained using the `yfinance` API. 
 
-> Disclaimer: 1) The projected prices shown in the chart above are purely suggestive. No conclusion on actual price can be derived. 2) The models applied here are subject to change. 
+> Disclaimer: 1) The projected prices shown in the chart above are purely suggestive. No conclusion on future price should be derived. 2) The models applied here are subject to change. 
 {: .prompt-warning }  
 
 > Share your feedback or suggestions for enhancing this page [here](https://github.com/assridha/assridha.github.io/discussions/5).

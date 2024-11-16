@@ -3,13 +3,15 @@ layout: post
 title: Power Law Residual Ratio v2
 date: 2024-10-26 23:21 +0200
 categories: ['Price']
-tags: ['indicator','power-law']
+tags: ['indicator','power-law','code']
 math: true
 image:
   path: /assets/img/Zpl.png
   alt: The power law residual ratio v2
 ---
 
+> Link to code implementation can be found [here](https://github.com/assridha/Bitcoin-Power-Tools/blob/main/PLRRv2.ipynb).
+{: .prompt-info }
 
 ## Introduction
 Bitcoin's price exhibits a long-term power law relationship with time, punctuated by periodic short-term boom-bust cycles that repeat approximately every 4 years (Figure 1). These bubble cycles are primarily attributed to two factors: Bitcoin's halving events, which occur precisely every 4 years, and the global liquidity cycle, which follows a similar approximate 4-year period. With the right conditions in place, a bull market rally initiates where the price sharply deviates upward from its natural power law trend. Driven by speculation and FOMO (Fear Of Missing Out), the price reaches unsustainable levels before eventually crashing back to its power law support price. 
