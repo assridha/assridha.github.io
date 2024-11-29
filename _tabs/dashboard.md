@@ -1,7 +1,21 @@
 ---
 icon: fas fa-tachometer-alt
 order: 1
+layout: page
 ---
+
+<style>
+#panel-wrapper {
+    display: none;
+}
+
+main[aria-label="Main Content"] {
+    max-width: 100% !important;
+    flex: 0 0 100% !important;
+    padding: 0 1rem !important;
+}
+</style>
+
 
 ## Bitcoin Price and Return
 
@@ -71,7 +85,6 @@ The daily live price data is obtained using the `yfinance` API.
 {: .prompt-tip} 
 
 
-
 <script type="module">
     import { initializeCharts } from '/assets/js/plrr-tradingview.js';
 
@@ -105,6 +118,7 @@ The daily live price data is obtained using the `yfinance` API.
             const bitcoinData = await response.json();
             document.getElementById('container').innerHTML = '';
             initializeCharts(bitcoinData.price_history, bitcoinData.quantile_price);
+            console.log(bitcoinData.stats)
         } catch (error) {
             console.error('Error fetching data:', error);
             if (retryCount < maxRetries) {
