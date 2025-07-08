@@ -13,6 +13,13 @@
 - type: rss
   icon: "fas fa-rss"
   noblank: true
+
+- type: primal
+  icon: "custom-primal"
+  url: "https://primal.net/p/nprofile1qqs9am94d4egsv4sg538emtkf64q4wjk04dx977dasv6vdgaxshls8gpr3s4x"
+
+
+  
 # Uncomment and complete the url below to enable more contact options
 #
 # - type: mastodon
