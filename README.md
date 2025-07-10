@@ -8,7 +8,7 @@ When installing the [**Chirpy**][chirpy] theme through [RubyGems.org][gem], Jeky
 from the theme's gem. If you have ever installed this theme gem, you can use the command
 `bundle info --path jekyll-theme-chirpy` to locate these files.
 
-The Jekyll team claims that this is to leave the ball in the user’s court, but this also results in users not being
+The Jekyll team claims that this is to leave the ball in the user's court, but this also results in users not being
 able to enjoy the out-of-the-box experience when using feature-rich themes.
 
 To fully use all the features of **Chirpy**, you need to copy the other critical files from the theme's gem to your
@@ -28,6 +28,52 @@ latest version of the **Chirpy** theme and the [CD][CD] workflow to here, so tha
 ## Usage
 
 Check out the [theme's docs](https://github.com/cotes2020/jekyll-theme-chirpy/wiki).
+
+## Jekyll Compose Commands
+
+This site uses [Jekyll Compose](https://github.com/jekyll/jekyll-compose) for easy content creation. Here are the most commonly used commands:
+
+### Posts
+```bash
+# Create a new post
+bundle exec jekyll post "My New Post"
+
+# Create a new post with a specific date
+bundle exec jekyll post "My New Post" --date 2024-01-15
+
+# Create a new post with timestamp
+bundle exec jekyll post "My New Post" --timestamp
+```
+
+### Drafts
+```bash
+# Create a new draft
+bundle exec jekyll draft "My Draft Post"
+
+# Publish a draft (moves from _drafts to _posts)
+bundle exec jekyll publish _drafts/my-draft-post.md
+
+# Publish a draft with a specific date
+bundle exec jekyll publish _drafts/my-draft-post.md --date 2024-01-15
+
+# Unpublish a post (moves from _posts to _drafts)
+bundle exec jekyll unpublish _posts/2024-01-15-my-post.md
+```
+
+### Pages
+```bash
+# Create a new page
+bundle exec jekyll page "About"
+
+# Create a new page in a subdirectory
+bundle exec jekyll page "contact/index"
+```
+
+### Serve with Drafts
+```bash
+# Serve the site including drafts
+bundle exec jekyll serve --drafts
+```
 
 ## Contributing
 

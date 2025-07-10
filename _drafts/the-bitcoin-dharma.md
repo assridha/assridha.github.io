@@ -8,9 +8,7 @@ tags:
 image:
   path: "/assets/img/bitcoindharma/bitcoin_dharma.png"
   alt: The Bitcoin Dharma Cycle
-date: 2025-06-13 21:47 +0200
 ---
-
 This post is a reflection on the interplay of Bitcoin and life’s stages, inspired by the principles of sovereignty and legacy. Share your thoughts—what phase are you in, and how does Bitcoin shape your path?
 
 In the spirit of the Bitcoin Dharma, where wealth is not just currency but a philosophy of sovereignty and legacy, we can map the phases of a person’s life to their Bitcoin holding pattern. Each stage reflects not only financial habits but also a deeper relationship with time, value, and purpose. Here’s how the journey unfolds:
