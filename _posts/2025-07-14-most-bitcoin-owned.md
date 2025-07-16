@@ -1,9 +1,12 @@
 ---
 layout: post
-title: "Estimating the maximum amount of Bitcoin that can be accumulated via DCA - Part 1"
+title: "Estimating the maximum Bitcoin that can be accumulated via DCA - Part 1"
 date: 2025-07-14 00:00:00 +0000
 categories: ['Articles']
 tags: ['cash-flow-analysis','power-law','dollar-cost-averaging']
+image:
+    path: assets/img/cashflowprelude/Maximum-Bitcoin-Stacked.png
+    alt: "Bitcoin accumulation over time"
 math: true
 ---
 
@@ -28,16 +31,16 @@ Let,
 - $s$: Amount invested per unit time (in USD or other currency)
 - $k$: Power law exponent
 - $P$: Price of Bitcoin at time $t$ (Average trend value)
-- $C$: A fitting constant in the power law price model
+- $A$: A fitting constant in the power law price model
 - $N$: Amount of Bitcoin stacked at $t > t_0$
 - $N_0$: Amount of Bitcoin at $t_0$
 
 ### Model Assumptions
 We begin by assuming that the price of Bitcoin, $P$, can be described by a simple Power Law model as a function of time, $t$:
 \begin{equation}\label{eq:power_law_price}
-P = C t^k
+P = A t^k
 \end{equation}
-Here, $C$ and $k$ are constants that can be determined by fitting the model to historical Bitcoin price data. The exponent $k$ captures the rate of price growth, while $C$ acts as a scaling factor.
+Here, $A$ and $k$ are constants that can be determined by fitting the model to historical Bitcoin price data. The exponent $k$ captures the rate of price growth, while $A$ acts as a scaling factor. A key assumption here is that this model represents a long-term trend, deliberately smoothing out significant price volatility and cyclical patterns (e.g., 4-year halving cycles). The timing of DCA relative to these cycles can have a substantial impact on short-to-medium term accumulation, which is not captured in this analysis.
 
 ### Initial Conditions
 For this derivation, we assume that we start with no Bitcoin at the beginning of our DCA strategy. Therefore, the amount of Bitcoin at time $t_0$ is zero:
@@ -59,60 +62,67 @@ dN = \frac{s}{P} dt
 
 Next, we substitute the Power Law price model from Equation \eqref{eq:power_law_price} into Equation \eqref{eq:dca_continuous} to describe the incremental accumulation in terms of time:
 \begin{equation}\label{eq:dca_price_substituted}
-dN = \frac{s}{C t^k} dt
+dN = \frac{s}{A t^k} dt
 \end{equation}
 
 ### II. Integrate the equation
 To find the total amount of Bitcoin, $N$, accumulated from a start time $t_0$ to a future time $t$, we integrate Equation \eqref{eq:dca_price_substituted}. We integrate the left side from our initial holding $N_0$ to the final holding $N$, and the right side from time $t_0$ to $t$:
 $$
 \begin{align}
-\int_{N_0}^{N} dN &= \int_{t_0}^{t} \frac{s}{C t^k} dt \label{eq:integral_setup} \\
- \Rightarrow N - N_0 &= \frac{s}{C} \int_{t_0}^{t} t^{-k} dt  \\
- \Rightarrow N  &= N_0 + \frac{s}{C(1-k)} \left[ t^{-k+1} \right]_{t_0}^{t} \label{eq:integrated}
+\int_{N_0}^{N} dN &= \int_{t_0}^{t} \frac{s}{A t^k} dt \label{eq:integral_setup} \\
+ \Rightarrow N - N_0 &= \frac{s}{A} \int_{t_0}^{t} t^{-k} dt  \\
+ \Rightarrow N  &= N_0 + \frac{s}{A(1-k)} \left[ t^{-k+1} \right]_{t_0}^{t} \label{eq:integrated}
 \end{align}
 $$
 Applying our initial condition from Equation \eqref{eq:initial_condition} where $N_0=0$, the equation simplifies to:
 \begin{equation}\label{eq:accumulated_btc_raw}
-N = \frac{s}{C(1-k)} \left( t^{1-k} - t_0^{1-k} \right)
+N = \frac{s}{A(1-k)} \left( t^{1-k} - t_0^{1-k} \right)
 \end{equation}
 After rearranging the terms to make the expression more intuitive (assuming $k > 1$), we arrive at the final formula for the amount of Bitcoin accumulated:
 \begin{equation}\label{eq:accumulated_btc_final}
-N = \frac{s}{C(k-1)} \left( \frac{1}{t_0^{k-1}} - \frac{1}{t^{k-1}} \right)
+N = \frac{s}{A(k-1)} \left( \frac{1}{t_0^{k-1}} - \frac{1}{t^{k-1}} \right)
 \end{equation}
 
 ### III. Maximum Bitcoin Estimation
 A fascinating consequence of this model is that it predicts a theoretical maximum amount of Bitcoin that can be accumulated. To find this maximum, $N_{max}$, we take the limit of Equation \eqref{eq:accumulated_btc_final} as time $t$ approaches infinity.
 $$
 \begin{align}
-N_{max} &= \lim_{t \to \infty} \frac{s}{C(k-1)} \left( \frac{1}{t_0^{k-1}} - \frac{1}{t^{k-1}} \right) \label{eq:max_btc_limit} \\
- &= \frac{s}{C(k-1)} \left( \frac{1}{t_0^{k-1}} - 0 \right)
+N_{max} &= \lim_{t \to \infty} \frac{s}{A(k-1)} \left( \frac{1}{t_0^{k-1}} - \frac{1}{t^{k-1}} \right) \label{eq:max_btc_limit} \\
+ &= \frac{s}{A(k-1)} \left( \frac{1}{t_0^{k-1}} - 0 \right)
 \end{align}
 $$
 The term $\frac{1}{t^{k-1}}$ approaches zero as $t \to \infty$ (assuming $k > 1$, which is true for Bitcoin's historical price). This leads to the final expression for the maximum amount of Bitcoin that can be accumulated:
 \begin{equation}\label{eq:max_btc_final}
-N_{max} = \frac{s}{C(k-1)t_0^{k-1}}
+N_{max} = \frac{s}{A(k-1)t_0^{k-1}}
 \end{equation}
 This result is profound. It implies that for a given investment rate, the maximum amount of Bitcoin one can ever accumulate is predetermined by the time one starts investing ($t_0$). The earlier you start, the larger your potential maximum stack.
 
 ## Analysis
-### Determining the constants $k$ and $C$
-The formula for the maximum amount of Bitcoin that can be accumulated requires two parameters to be determined: the power law exponent $k$ and the constant $C$. Here, I determined these values based on OLS regression on the price of Bitcoin from 2010-2024. The results are:
+### Determining the constants $k$ and $A$
+The formula for the maximum amount of Bitcoin that can be accumulated requires two parameters to be determined: the power law exponent $k$ and the constant $A$. Here, I determined these values based on OLS regression on the price of Bitcoin from 2010-2024. The results are:
 - $k = 5.702$
-- $C = 0.0105$
+- $A = 0.0105$
 
 ### Impact of investment rate $s$
 Below is the chart showing the Bitcoin accumulation over time starting from Jan 2025 for various monthly investment amounts. As you can see, the amount of Bitcoin stacked rapidly increases at first, but eventually plateaus to a terminal value over time. 
-- TODO: Add chart of the amount of Bitcoin accumulated over time, with the start time as the x-axis and the amount of Bitcoin as the y-axis.
+
+![Bitcoin Accumulation by DCA Amount](/assets/img/cashflowprelude/btc_accumulation_by_dca.png)
+_Figure 1: Bitcoin accumulation curves for different monthly DCA amounts, starting in 2024._
 
 ### Impact of starting time $t_0$
 In addition to the dollar amount invested, the starting time $t_0$ also plays a crucial role. Below is the chart showing the Bitcoin accumulation over time starting from Jan 2025 for various starting times. 
 
-- TODO: Add chart of BTC accumulation vs time for different starting times.
+![Bitcoin Accumulation by Start Date](/assets/img/cashflowprelude/btc_accumulation_by_start_date.png)
+_Figure 2: Bitcoin accumulation for a $1,000/month DCA, showing the impact of different start dates._
 
 ### The Maximum Bitcoin Contours
 Achieving the mythical 1 Bitcoin is a popular goal for many Bitcoiners. This feat is becoming increasingly difficult as the price growth of Bitcoin accelerates. This is illustrated in the contour plot below, where the contours represent the maximum amount of Bitcoin that can be accumulated over time for different starting times and investment rates. 
 
-- TODO: Add a contour plot of the maximum amount of Bitcoin that can be accumulated over time, with the start time as the x-axis and the maximum amount of Bitcoin as the y-axis.
+<div class="chart-container" style="position: relative; width: 100%; padding-bottom: 100%;">
+    <iframe src="/assets/html/max_btc_contour.html" frameborder="0" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe>
+</div>
+<img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="" style="display: block; margin: 0; border: 0; padding: 0; height: 0; width: 0;" />
+_Figure 3: Maximum BTC accumulated for different starting years and monthly DCA amounts._
 
 The chart clearly shows the difficulty of achieving a certain amount of Bitcoin, especially as time progresses. For instance, for a family earning \\$100,000 per year will need to put 20% of their income or \\$20,000 per year into Bitcoin starting today to ever achieve 1 BTC. That same family would need to put 30% of their income or \\$30,000 per year into Bitcoin if they started five years later in 2030 to achieve the same stack. 
 
@@ -121,7 +131,9 @@ The chart clearly shows the difficulty of achieving a certain amount of Bitcoin,
 In this article, we derived a set of formulas to model Bitcoin accumulation via a continuous Dollar-Cost Averaging strategy, based on a Power Law price model. Our derivation produced an equation for the amount of Bitcoin accumulated over a given period, and more importantly, a formula for the theoretical maximum amount of Bitcoin one can acquire, which is inversely proportional to the start time raised to the power of $k-1$.
 
 This analysis opens up several avenues for further exploration:
-- **Model Calibration and Validation:** One could perform a regression on historical Bitcoin price data to find the optimal values for the constants $C$ and $k$, and then test how well the model's predictions have matched historical accumulation.
+- **Data Validation:** Before refining the model, a crucial first step is to rigorously backtest the existing model to see how well its predictions have matched historical accumulation outcomes. This helps to quantify the model's accuracy and its limitations.
+- **Model Calibration:** Based on the validation results, one could perform a fresh regression on historical Bitcoin price data to find the optimal values for the constants $A$ and $k$.
+- **Impact of Price Cycles:** A major simplification in this article is the exclusion of Bitcoin's well-known price cycles. A more advanced and highly important analysis would study how the phase of the cycle at the start of a DCA strategy impacts the total accumulated Bitcoin. For instance, starting a DCA during a bear market versus a bull market would yield significantly different results, a factor not considered here.
 - **Sensitivity Analysis:** It would be insightful to analyze how sensitive the accumulated amount of Bitcoin is to changes in the investment rate $s$, the power law exponent $k$, and the starting time $t_0$.
 - **Alternative Price Models:** While the Power Law is a popular long-term model, other models could be used for the price of Bitcoin, such as stock-to-flow or models incorporating cyclical behavior. Deriving accumulation formulas for these models would be a valuable comparison.
 - **Discrete vs. Continuous DCA:** Our model assumes continuous investment. A more practical analysis could explore a discrete DCA model (e.g., weekly or monthly investments) and compare the results to the continuous case.
@@ -158,10 +170,10 @@ Below is a simple calculator that allows you to estimate the maximum amount of B
     // Convert monthly DCA to daily, as the model uses days for 't'
     const s_daily = s_monthly / 30.44;
 
-    // 2. Define constants from Parker Banks's power law model: P = C * t^k
+    // 2. Define constants from Parker Banks's power law model: P = A * t^k
 
     const k = 5.7;
-    const C = Math.exp(-38.184);
+    const A = Math.exp(-38.184);
 
     // 3. Calculate t0 in days since Genesis Block (Jan 3, 2009)
     const genesisBlockDate = new Date('2009-01-03');
@@ -170,8 +182,8 @@ Below is a simple calculator that allows you to estimate the maximum amount of B
     const t0 = (today - genesisBlockDate) / (1000 * 60 * 60 * 24);
 
     // 4. Calculate N_max using the formula derived in the article
-    // N_max = s / (C * (k - 1) * t_0^(k - 1))
-    const N_max = s_daily / (C * (k - 1) * Math.pow(t0, k - 1));
+    // N_max = s / (A * (k - 1) * t_0^(k - 1))
+    const N_max = s_daily / (A * (k - 1) * Math.pow(t0, k - 1));
 
     // 5. Display result
     document.getElementById('result').innerText = `Estimated Max Bitcoin: ${N_max.toFixed(8)} BTC`;

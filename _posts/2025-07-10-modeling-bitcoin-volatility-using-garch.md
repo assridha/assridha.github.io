@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Modeling Bitcoin Volatility using GARCH
+title: Bitcoin GARCH(1,1) Volatility Chart
 date: 2025-07-10 23:43 +0200
 toc: false
 categories: ['Live Charts']
