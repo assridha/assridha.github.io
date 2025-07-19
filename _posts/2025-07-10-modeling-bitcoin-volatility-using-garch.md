@@ -5,6 +5,9 @@ date: 2025-07-10 23:43 +0200
 toc: false
 categories: ['Live Charts']
 tags: ['garch', 'volatility']
+image:
+    path: /assets/img/charts/volatility-garch.png
+    alt: "Bitcoin GARCH(1,1) Volatility Chart"
 ---
 
 <style>
