@@ -28,6 +28,16 @@ image:
         padding-top: 450px;
     }
 }
+
+#cover-spin {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    border: none;
+    border-radius: 10px;
+}
 </style>
 
 <link rel="stylesheet" type="text/css" href="/assets/css/spinner.css">
@@ -35,9 +45,11 @@ image:
 
 <div class="full-width-iframe-container">
     <div class="iframe-responsive-wrapper">
+        <div id="cover-spin"></div>
         <iframe
             src="https://bitcoin-garch-v1-e188439e1223.herokuapp.com/"
-            style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:none; border-radius: 10px;">
+            style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:none; border-radius: 10px;"
+            onload="this.previousElementSibling.style.display = 'none';">
         </iframe>
     </div>
 </div>
