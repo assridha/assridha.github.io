@@ -33,6 +33,11 @@ layout: page
     #iframe-2 {height: 1150px;}
     #iframe-3 { height: 400px; }
   }
+
+  .trends-container {
+    overflow: auto;
+    -webkit-overflow-scrolling: touch;
+  }
 </style>
 
 <link rel="stylesheet" type="text/css" href="/assets/css/spinner.css">
@@ -56,10 +61,12 @@ layout: page
 
 <hr>
 
+<div class="trends-container">
 <iframe
   id="iframe-3"
   class="dashboard-iframe"
   src="/assets/html/google_trends.html"
   scrolling="no">
 </iframe>
+</div>
 
