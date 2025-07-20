@@ -58,15 +58,3 @@ layout: page
   src="https://sheltered-springs-88934-ff25ba4be6be.herokuapp.com/"
   scrolling="no">
 </iframe>
-
-<hr>
-
-<div class="trends-container">
-<iframe
-  id="iframe-3"
-  class="dashboard-iframe"
-  src="/assets/html/google_trends.html"
-  scrolling="no">
-</iframe>
-</div>
-
