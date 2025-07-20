@@ -29,7 +29,7 @@ layout: page
 
   /* Mobile height */
   @media (max-width: 768px) {
-    #iframe-1 {height: 820px;}
+    #iframe-1 {height: 740px;}
     #iframe-2 {height: 1150px;}
     #iframe-3 { height: 400px; }
   }
