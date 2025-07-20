@@ -23,7 +23,7 @@ layout: page
   }
 
   /* Desktop height */
-  #iframe-1 { height: 650px; }
+  #iframe-1 { height: 520px; }
   #iframe-2 { height: 650px; }
   #iframe-3 { height: 400px; }
 
