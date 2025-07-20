@@ -3,8 +3,8 @@ layout: post
 title: Bitcoin GARCH(1,1) Volatility Chart 📈
 date: 2025-07-10 23:43 +0200
 toc: false
-categories: ['Live Charts']
-tags: ['garch', 'volatility']
+categories: ['Live Charts 📈']
+tags: ['garch', 'volatility', 'live-chart 📈']
 ---
 
 <style>
