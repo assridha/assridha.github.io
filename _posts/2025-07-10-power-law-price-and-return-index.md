@@ -1,13 +1,10 @@
 ---
 layout: post
-title: Power Law Price and Return Index Chart
+title: Power Law Price and Return Index Chart 📈
 date: 2025-07-10 23:36 +0200
 categories: ['Live Charts']
 tags: ['power-law', 'price-index', 'return-index', 'live-chart']
 toc: false
-image:
-    path: /assets/img/charts/price-return.png
-    alt: "Bitcoin Power Law Price and Return Index Chart"
 ---
 
 
