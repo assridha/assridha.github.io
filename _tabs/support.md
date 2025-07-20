@@ -22,7 +22,6 @@ If you find the content on this website useful, please consider supporting me th
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
 <script type="text/javascript">
-  // QR Code
   new QRCode(document.getElementById("qrcode"), {
     text: "lightning:ashwins@getalby.com",
     width: 220,
@@ -31,8 +30,6 @@ If you find the content on this website useful, please consider supporting me th
     colorLight : "#ffffff",
     correctLevel : QRCode.CorrectLevel.H
   });
-
-  // Copy to clipboard
   const copyBtn = document.getElementById('copy-ln-address');
   const addressSpan = document.getElementById('ln-address');
   if (copyBtn && addressSpan) {
@@ -42,7 +39,7 @@ If you find the content on this website useful, please consider supporting me th
           const originalTitle = copyBtn.title;
           const originalIconColor = icon.style.color;
           
-          icon.style.color = '#28a745'; // green
+          icon.style.color = '#28a745';
           copyBtn.title = 'Copied!';
 
           setTimeout(function() {
