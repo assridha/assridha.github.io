@@ -39,6 +39,16 @@ main[aria-label="Main Content"] {
         padding-top: 450px;
     }
 }
+
+#cover-spin {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    border: none;
+    border-radius: 10px;
+}
 </style>
 
 
@@ -48,9 +58,11 @@ main[aria-label="Main Content"] {
 
 <div class="full-width-iframe-container">
     <div class="iframe-responsive-wrapper">
+        <div id="cover-spin"></div>
         <iframe
             src="https://bitcoin-price-chart-5238b01498b6.herokuapp.com/"
-            style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:none; border-radius: 10px;">
+            style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:none; border-radius: 10px;"
+            onload="this.previousElementSibling.style.display = 'none';">
         </iframe>
     </div>
 </div>
