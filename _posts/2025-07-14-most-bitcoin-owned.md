@@ -160,33 +160,18 @@ Below is a simple calculator that allows you to estimate the maximum amount of B
 
 <script>
   document.getElementById('calculate-btn').addEventListener('click', function() {
-    // 1. Get user input (monthly DCA amount)
     const c_monthly = parseFloat(document.getElementById('dca-amount').value);
-
     if (isNaN(c_monthly) || c_monthly <= 0) {
       document.getElementById('result').innerText = 'Please enter a valid amount.';
       return;
     }
-
-    // Convert monthly DCA to daily, as the model uses days for 't'
     const c_daily = c_monthly / 30.44;
-
-    // 2. Define constants from Parker Banks's power law model: P = A * t^k
-
     const k = 5.7;
     const A = Math.exp(-38.184);
-
-    // 3. Calculate t0 in days since Genesis Block (Jan 3, 2009)
     const genesisBlockDate = new Date('2009-01-03');
     const today = new Date();
-    // The model's time t starts from an optimized value, but using days from genesis is a standard approach.
     const t0 = (today - genesisBlockDate) / (1000 * 60 * 60 * 24);
-
-    // 4. Calculate N_max using the formula derived in the article
-    // N_max = c / (A * (k - 1) * t_0^(k - 1))
     const N_max = c_daily / (A * (k - 1) * Math.pow(t0, k - 1));
-
-    // 5. Display result
     document.getElementById('result').innerText = `Estimated Max Bitcoin: ${N_max.toFixed(8)} BTC`;
   });
 </script>
