@@ -23,7 +23,7 @@ layout: page
   }
 
   /* Desktop height */
-  #iframe-1 { height: 520px; }
+  #iframe-1 { height: 580px; }
   #iframe-2 { height: 650px; }
   #iframe-3 { height: 400px; }
 
@@ -44,17 +44,25 @@ layout: page
 <link rel="stylesheet" type="text/css" href="/assets/css/dashboard.css">
 
 
-<iframe
-  id="iframe-1"
-  class="dashboard-iframe"
-  src="https://price-summary-81680f666113.herokuapp.com/"
-  scrolling="no">
-</iframe>
+<div style="position: relative;">
+  <div class="cover-spin"></div>
+  <iframe
+    id="iframe-1"
+    class="dashboard-iframe"
+    src="https://price-summary-81680f666113.herokuapp.com/"
+    scrolling="no"
+    onload="this.previousElementSibling.style.display='none';">
+  </iframe>
+</div>
 <hr>
 
-<iframe
-  id="iframe-2"
-  class="dashboard-iframe"
-  src="https://sheltered-springs-88934-ff25ba4be6be.herokuapp.com/"
-  scrolling="no">
-</iframe>
+<div style="position: relative;">
+  <div class="cover-spin"></div>
+  <iframe
+    id="iframe-2"
+    class="dashboard-iframe"
+    src="https://sheltered-springs-88934-ff25ba4be6be.herokuapp.com/"
+    scrolling="no"
+    onload="this.previousElementSibling.style.display='none';">
+  </iframe>
+</div>

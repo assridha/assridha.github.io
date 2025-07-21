@@ -37,7 +37,7 @@ main[aria-label="Main Content"] {
     }
 }
 
-#cover-spin {
+.cover-spin {
     position: absolute;
     top: 0;
     left: 0;
@@ -55,7 +55,7 @@ main[aria-label="Main Content"] {
 
 <div class="full-width-iframe-container">
     <div class="iframe-responsive-wrapper">
-        <div id="cover-spin"></div>
+        <div class="cover-spin"></div>
         <iframe
             src="https://bitcoin-price-chart-5238b01498b6.herokuapp.com/"
             style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:none; border-radius: 10px;"

@@ -26,7 +26,7 @@ tags: ['garch', 'volatility', 'live-chart 📈']
     }
 }
 
-#cover-spin {
+.cover-spin {
     position: absolute;
     top: 0;
     left: 0;
@@ -42,7 +42,7 @@ tags: ['garch', 'volatility', 'live-chart 📈']
 
 <div class="full-width-iframe-container">
     <div class="iframe-responsive-wrapper">
-        <div id="cover-spin"></div>
+        <div class="cover-spin"></div>
         <iframe
             src="https://bitcoin-garch-v1-e188439e1223.herokuapp.com/"
             style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:none; border-radius: 10px;"
