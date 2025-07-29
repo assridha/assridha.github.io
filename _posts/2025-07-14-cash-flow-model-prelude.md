@@ -26,10 +26,11 @@ Bitcoin's price power law provides a robust model for understanding the asset's 
 This article is a prelude to a more detailed article on the Bitcoin Flow Equation. Here I will give a brief mathematical introduction to the core idea.
  
 Lets say you want to model the change in value of a Bitcoin portfolio over time. Let this be represented by the symbol $S$. If the portfolio has $N$ Bitcoin and $P$ is the price of Bitcoin then
+$$
 \begin{equation}
  S=PN \label{eq:1}
 \end{equation}
-
+$$
 The change in value of the portfolio is a combination of both the change in price of Bitcoin and the change in the number of Bitcoin in the portfolio. This can be expressed by the following differential equation:
 \begin{equation}
  dS = dPN+PdN \label{eq:dS1} 
@@ -80,9 +81,11 @@ Depending on the strategy, there are several ways to model the cashflow process.
 ## Solving the Equation
 ### The General Solution
 To solve the equation, we first rearrange it into the standard form for a linear first-order ODE:
+$$
 \begin{equation}
 \frac{dS}{dt} - \frac{k}{t}S = \frac{dC}{dt}
 \end{equation}
+$$
 We can solve this using an integrating factor, $I(t) = t^{-k}$. Multiplying the equation by $I(t)$ gives:
 \begin{equation}
 t^{-k}\frac{dS}{dt} - kt^{-k-1}S = t^{-k}\frac{dC}{dt}
