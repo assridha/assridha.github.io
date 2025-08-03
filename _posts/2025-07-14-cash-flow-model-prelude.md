@@ -2,7 +2,7 @@
 layout: post
 title: "The Bitcoin Flow Equation - A Mathematical Prelude"
 date: 2025-07-14 00:00:00 +0000
-categories: ['Articles 📝']
+categories: ['Price 💹']
 tags: ['cash-flow-analysis','power-law']
 image:
      path: /assets/img/cashflowprelude/bitcoin-cash-flow-2.jpg

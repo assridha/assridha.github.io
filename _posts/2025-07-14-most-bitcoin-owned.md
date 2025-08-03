@@ -2,7 +2,7 @@
 layout: post
 title: "Estimating the maximum Bitcoin achievable via DCA - Part 1"
 date: 2025-07-14 00:00:00 +0000
-categories: ['Articles 📝']
+categories: ['Price 💹']
 tags: ['cash-flow-analysis','power-law','dollar-cost-averaging']
 image:
     path: assets/img/cashflowprelude/Maximum-Bitcoin-Stacked.png

@@ -2,7 +2,7 @@
 layout: post
 title: Power Law Residual Ratio v2
 date: 2024-10-26 23:21 +0200
-categories: ['Articles 📝']
+categories: ['Price 💹']
 tags: ['indicator','power-law','code 💻']
 math: true
 image:
