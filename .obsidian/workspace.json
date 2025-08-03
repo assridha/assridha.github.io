@@ -168,8 +168,11 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "888ff05127001855",
+  "active": "64f67360f571b606",
   "lastOpenFiles": [
+    "_site/labs/index.html",
+    "_site/labs",
+    "_tabs/labs.md",
     "_posts/2025-07-10-power-law-price-and-return-index.md",
     "_posts/2025-07-14-cash-flow-model-prelude.md",
     "_posts/2025-07-14-most-bitcoin-owned.md",

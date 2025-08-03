@@ -29,12 +29,19 @@
       <!-- the real tabs -->
       {% for tab in site.tabs %}
         <li class="nav-item{% if tab.url == page.url %}{{ " active" }}{% endif %}">
-          <a href="{{ tab.url | relative_url }}" class="nav-link">
-            <i class="fa-fw {{ tab.icon }}"></i>
-            {% capture tab_name %}{{ tab.url | split: '/' }}{% endcapture %}
+          {% capture tab_name %}{{ tab.url | split: '/' }}{% endcapture %}
+          {% if tab.external_url %}
+            <a href="{{ tab.external_url }}" class="nav-link" target="_blank" rel="noopener noreferrer">
+              <i class="fa-fw {{ tab.icon }}"></i>
+              <span>{{ site.data.locales[include.lang].tabs.[tab_name] | default: tab.title | upcase }}</span>
+            </a>
+          {% else %}
+            <a href="{{ tab.url | relative_url }}" class="nav-link">
+              <i class="fa-fw {{ tab.icon }}"></i>
 
-            <span>{{ site.data.locales[include.lang].tabs.[tab_name] | default: tab.title | upcase }}</span>
-          </a>
+              <span>{{ site.data.locales[include.lang].tabs.[tab_name] | default: tab.title | upcase }}</span>
+            </a>
+          {% endif %}
         </li>
         <!-- .nav-item -->
       {% endfor %}
